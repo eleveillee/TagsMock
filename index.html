@@ -3,10 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mock Index Page</title>
+    <title>trouv AI - Automated GTM Tag Setup</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Mock Index Page</h1>
-    <p>This is an empty mock index page.</p>
+    <div class="container">
+        <header>
+            <div class="logo">trouv <span>AI</span></div>
+            <nav>
+                <!-- Simple mock nav -->
+            </nav>
+        </header>
+
+        <main>
+            <!-- 1. Hero / Input -->
+            <section id="hero-section" class="hero">
+                <h1>Automated Tracking Setup</h1>
+                <p class="subtitle">Enter your website URL. Our AI will scan your site, identify key user interactions, and configure Google Tag Manager for you in seconds.</p>
+                
+                <div class="url-input-container">
+                    <input type="url" id="url-input" placeholder="example.com" value="https://myshop.com">
+                    <button id="start-scan">Start Scan</button>
+                </div>
+            </section>
+
+            <!-- 2. Scanning State -->
+            <section id="scanning-section" class="scanning-state">
+                <div class="scanner-circle"></div>
+                <h2>Analyzing Website Structure...</h2>
+                <div class="scan-steps">
+                    <div class="step" data-text="Crawling sitemap and pages">Crawling sitemap and pages...</div>
+                    <div class="step" data-text="Identifying interactive elements">Identifying interactive elements...</div>
+                    <div class="step" data-text="Matching user behaviors to events">Matching user behaviors to events...</div>
+                    <div class="step" data-text="Generating GTM configuration">Generating GTM configuration...</div>
+                </div>
+            </section>
+
+            <!-- 3. Results / Dashboard -->
+            <section id="results-section" class="results-state">
+                <div class="results-header">
+                    <div class="site-preview">
+                        <div class="site-icon" id="site-initial">W</div>
+                        <div>
+                            <h2 style="margin:0" id="site-url-display">website.com</h2>
+                            <span style="color:#94a3b8; font-size: 0.9rem">Scan Complete • 6 Events Found</span>
+                        </div>
+                    </div>
+                    <button id="deploy-btn">Deploy to GTM</button>
+                </div>
+
+                <div class="events-grid">
+                    <!-- Cards injected by JS -->
+                </div>
+
+                <div class="actions">
+                    <button class="btn-secondary">Download Setup Guide</button>
+                    <button class="btn-secondary">Advanced Configuration</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
