@@ -7,6 +7,7 @@
     --border-color: #334155;
     --success-color: #22c55e;
     --warning-color: #eab308;
+    --code-bg: #0f1117;
 }
 
 body {
@@ -62,6 +63,7 @@ main {
     text-align: center;
     max-width: 600px;
     animation: fadeIn 0.5s ease-out;
+    width: 100%;
 }
 
 h1 {
@@ -112,6 +114,46 @@ button {
 
 button:hover {
     background-color: var(--accent-hover);
+}
+
+/* Configuration Form */
+.config-form {
+    background: var(--secondary-bg);
+    padding: 2rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    border-color: var(--accent-color);
 }
 
 /* Scanning State */
@@ -201,6 +243,8 @@ button:hover {
     transition: transform 0.2s, border-color 0.2s;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .event-card:hover {
@@ -240,6 +284,7 @@ button:hover {
     border-radius: 0.25rem;
     display: inline-block;
     margin-bottom: 1rem;
+    align-self: flex-start;
 }
 
 .event-desc {
@@ -248,12 +293,44 @@ button:hover {
     margin-bottom: 1.5rem;
 }
 
+/* Data Layer Preview Styles */
+.datalayer-preview {
+    background: var(--code-bg);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: #e2e8f0;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+}
+
+.datalayer-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+    display: block;
+    font-weight: 600;
+}
+
+.insight-box {
+    background: rgba(59, 130, 246, 0.1);
+    border-left: 3px solid var(--accent-color);
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    color: #bfdbfe;
+}
+
 .toggle-switch {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     font-size: 0.9rem;
     cursor: pointer;
+    margin-top: auto;
 }
 
 .switch {

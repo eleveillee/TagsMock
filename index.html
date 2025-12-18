@@ -19,11 +19,33 @@
             <!-- 1. Hero / Input -->
             <section id="hero-section" class="hero">
                 <h1>Automated Tracking Setup</h1>
-                <p class="subtitle">Enter your website URL. Our AI will scan your site, identify key user interactions, and configure Google Tag Manager for you in seconds.</p>
+                <p class="subtitle">Enter your website URL to begin the AI scan.</p>
                 
                 <div class="url-input-container">
                     <input type="url" id="url-input" placeholder="example.com" value="https://myshop.com">
-                    <button id="start-scan">Start Scan</button>
+                    <button id="start-scan-btn">Next: Configure IDs</button>
+                </div>
+            </section>
+
+            <!-- 1.5 Configuration Step -->
+            <section id="config-section" class="hero" style="display: none;">
+                <h1>Connect Your Tools</h1>
+                <p class="subtitle">Enter your tracking IDs to generate personalized tags.</p>
+
+                <div class="config-form">
+                    <div class="input-group">
+                        <label for="gtm-id">GTM Container ID</label>
+                        <input type="text" id="gtm-id" placeholder="GTM-XXXXXX">
+                    </div>
+                    <div class="input-group">
+                        <label for="ga4-id">GA4 Measurement ID</label>
+                        <input type="text" id="ga4-id" placeholder="G-XXXXXXXXXX">
+                    </div>
+                    <div class="input-group">
+                        <label for="fb-id">Facebook Pixel ID</label>
+                        <input type="text" id="fb-id" placeholder="1234567890">
+                    </div>
+                    <button id="start-crawling-btn" style="width: 100%; margin-top: 1rem;">Start AI Scan</button>
                 </div>
             </section>
 
