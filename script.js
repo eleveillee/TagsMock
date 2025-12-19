@@ -126,10 +126,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Custom Variables Logic
+    const addVarBtn = document.getElementById('add-variable-btn');
+    const customVarsList = document.getElementById('custom-variables-list');
+
+    if (addVarBtn && customVarsList) {
+        addVarBtn.addEventListener('click', () => {
+            const row = document.createElement('div');
+            row.className = 'custom-var-row';
+            row.innerHTML = `
+                <div class="input-group">
+                    <label>Variable Name</label>
+                    <input type="text" placeholder="e.g. Merchant ID">
+                </div>
+                <div class="input-group">
+                    <label>Value</label>
+                    <input type="text" placeholder="Value">
+                </div>
+                <button class="btn-icon-only" title="Remove">
+                    ✕
+                </button>
+            `;
+            
+            // Remove button logic
+            row.querySelector('.btn-icon-only').addEventListener('click', () => {
+                row.remove();
+            });
+
+            customVarsList.appendChild(row);
+        });
+    }
+
     // Mock Deployment
     document.getElementById('deploy-btn').addEventListener('click', () => {
         const btn = document.getElementById('deploy-btn');
         const originalText = btn.textContent;
+        
+        // Collect variables for demo purposes
+        const gtmId = document.getElementById('var-gtm')?.value || 'Not set';
+        const pixelId = document.getElementById('var-pixel')?.value || 'Not set';
+        const ga4Id = document.getElementById('var-ga4')?.value || 'Not set';
+        
         btn.textContent = 'Publishing to GTM...';
         btn.disabled = true;
 
@@ -140,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.textContent = originalText;
                 btn.style.backgroundColor = '';
                 btn.disabled = false;
-                alert('Mock: Configuration successfully pushed to Google Tag Manager container GTM-XXXXXX');
+                alert(`Mock: Configuration pushed to GTM!\n\nIncluded Variables:\n- GTM ID: ${gtmId}\n- Pixel ID: ${pixelId}\n- GA4 ID: ${ga4Id}`);
             }, 3000);
         }, 2000);
     });

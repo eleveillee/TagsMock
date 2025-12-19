@@ -52,6 +52,32 @@
                     <button id="deploy-btn">Deploy to GTM</button>
                 </div>
 
+                <!-- Custom Variables Section -->
+                <div class="variables-config">
+                    <h3>Global Variables</h3>
+                    <p class="section-desc">Configure IDs and secrets to be injected into your tags.</p>
+                    <div class="variable-grid">
+                        <div class="input-group">
+                            <label for="var-gtm">GTM Container ID</label>
+                            <input type="text" id="var-gtm" placeholder="GTM-XXXXXX">
+                        </div>
+                        <div class="input-group">
+                            <label for="var-pixel">Facebook Pixel ID</label>
+                            <input type="text" id="var-pixel" placeholder="123456789012345">
+                        </div>
+                        <div class="input-group">
+                            <label for="var-ga4">GA4 Measurement ID</label>
+                            <input type="text" id="var-ga4" placeholder="G-XXXXXXXXXX">
+                        </div>
+                    </div>
+                    
+                    <div id="custom-variables-list">
+                        <!-- Dynamic variables will appear here -->
+                    </div>
+                    
+                    <button id="add-variable-btn" class="btn-text">+ Add Custom Variable</button>
+                </div>
+
                 <div class="events-grid">
                     <!-- Cards injected by JS -->
                 </div>

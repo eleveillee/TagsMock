@@ -187,6 +187,102 @@ button:hover {
     font-weight: bold;
 }
 
+/* Variables Config Section */
+.variables-config {
+    background: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.variables-config h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.section-desc {
+    color: #94a3b8;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    margin-top: 0;
+}
+
+.variable-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #cbd5e1;
+}
+
+.input-group input {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    padding: 0.6rem;
+    border-radius: 0.25rem;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+    border-color: var(--accent-color);
+}
+
+.custom-var-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: flex-end;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.custom-var-row .input-group {
+    flex: 1;
+}
+
+.btn-icon-only {
+    background: transparent;
+    color: #ef4444; /* red for delete */
+    padding: 0.6rem;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icon-only:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.btn-text {
+    background: transparent;
+    color: var(--accent-color);
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.btn-text:hover {
+    background: transparent;
+    text-decoration: underline;
+}
+
 .events-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
