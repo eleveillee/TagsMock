@@ -16,6 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Tracks when a user adds an item to their shopping cart.',
             confidence: 98,
             type: 'e-commerce',
+            insights: [
+                'Capturing this event allows you to measure product demand and optimize your pricing strategy.',
+                'High add-to-cart rates with low purchases may indicate friction in the checkout process.'
+            ],
             dataLayerCode: `dataLayer.push({
   event: 'add_to_cart',
   ecommerce: {
@@ -36,6 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Fires when a transaction is successfully completed.',
             confidence: 99,
             type: 'e-commerce',
+            insights: [
+                'This is your primary conversion metric. Use this to calculate ROI and feed value-based optimization algorithms.',
+                'Segmenting users by purchase value helps identify your most valuable customers.'
+            ],
             dataLayerCode: `dataLayer.push({
   event: 'purchase',
   ecommerce: {
@@ -52,6 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Tracks successful email subscription form submissions.',
             confidence: 92,
             type: 'lead',
+            insights: [
+                'Grow your audience by tracking these signups. Essential for email marketing attribution.',
+                'Users who subscribe are 3x more likely to return to your site.'
+            ],
             dataLayerCode: `dataLayer.push({
   event: 'generate_lead',
   form_id: 'newsletter_footer',
@@ -64,6 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Tracks when a user reads a content piece.',
             confidence: 85,
             type: 'content',
+            insights: [
+                'Understand what content resonates with your audience to guide your content strategy.',
+                'High engagement with content pages often correlates with higher brand loyalty.'
+            ],
             dataLayerCode: `dataLayer.push({
   event: 'view_content',
   content_type: 'article',
@@ -77,6 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Tracks clicks on contact email or phone links.',
             confidence: 88,
             type: 'lead',
+            insights: [
+                'Track intent to contact as a high-value lead signal, even without a form fill.',
+                'Compare click rates on phone vs. email to understand preferred communication channels.'
+            ],
             dataLayerCode: `dataLayer.push({
   event: 'contact_click',
   link_type: 'email', // or 'phone'
@@ -89,6 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Tracks when a user watches embedded product videos.',
             confidence: 76,
             type: 'engagement',
+            insights: [
+                'Measure user engagement depth with your product demonstrations.',
+                'Video watchers are typically more informed and closer to a purchase decision.'
+            ],
             dataLayerCode: `dataLayer.push({
   event: 'video_progress',
   video_title: 'Product Demo',
@@ -120,9 +144,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 stepIndex++;
             } else {
                 clearInterval(interval);
-                setTimeout(showResults, 1000);
+                setTimeout(showResults, 300);
             }
-        }, 1500);
+        }, 300);
 
         function showResults() {
             scanningSection.style.display = 'none';
@@ -151,6 +175,8 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'event-card';
             card.style.animationDelay = `${index * 100}ms`;
             
+            const insightsHtml = event.insights.map(insight => `<li>${insight}</li>`).join('');
+
             card.innerHTML = `
                 <div class="confidence-badge ${isHighConfidence ? 'confidence-high' : ''}">
                     ${event.confidence}% AI Match
@@ -162,11 +188,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="product-insight" style="background: #eff6ff; padding: 12px; border-radius: 8px; margin: 12px 0; font-size: 0.85rem; border: 1px solid #bfdbfe; color: #1e40af;">
                     <div style="display: flex; align-items: center; margin-bottom: 6px;">
                         <span style="margin-right: 6px;">💡</span>
-                        <strong>Smart Insight</strong>
+                        <strong>Smart Insights</strong>
                     </div>
-                    <div>
-                        This interaction is key for tracking product growth. It will automatically trigger standardized tags for GA4 (ID: <span class="var-ref">GTM-VAR</span>) and FB Pixel (ID: <span class="var-ref">FB-VAR</span>).
-                    </div>
+                    <ul style="margin: 0; padding-left: 20px; list-style-type: disc;">
+                        ${insightsHtml}
+                    </ul>
                 </div>
 
                 <div class="datalayer-preview" style="background: #f8fafc; padding: 12px; border-radius: 8px; margin: 12px 0; font-size: 0.8rem; border: 1px solid #e2e8f0;">
