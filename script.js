@@ -159,15 +159,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="event-trigger">${event.trigger}</span>
                 <p class="event-desc">${event.description}</p>
                 
-                <div class="datalayer-preview" style="background: #f1f5f9; padding: 12px; border-radius: 8px; margin: 12px 0; font-size: 0.8rem; border: 1px solid #e2e8f0;">
+                <div class="product-insight" style="background: #eff6ff; padding: 12px; border-radius: 8px; margin: 12px 0; font-size: 0.85rem; border: 1px solid #bfdbfe; color: #1e40af;">
+                    <div style="display: flex; align-items: center; margin-bottom: 6px;">
+                        <span style="margin-right: 6px;">💡</span>
+                        <strong>Smart Insight</strong>
+                    </div>
+                    <div>
+                        This interaction is key for tracking product growth. It will automatically trigger standardized tags for GA4 (ID: <span class="var-ref">GTM-VAR</span>) and FB Pixel (ID: <span class="var-ref">FB-VAR</span>).
+                    </div>
+                </div>
+
+                <div class="datalayer-preview" style="background: #f8fafc; padding: 12px; border-radius: 8px; margin: 12px 0; font-size: 0.8rem; border: 1px solid #e2e8f0;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <strong style="color: #64748b;">Data Layer Configuration</strong>
-                        <span style="color: #94a3b8; font-size: 0.7rem;">Ready for GTM</span>
+                        <strong style="color: #64748b;">Technical Implementation</strong>
+                        <span style="color: #94a3b8; font-size: 0.7rem;">DataLayer Code</span>
                     </div>
                     <pre style="margin: 0; white-space: pre-wrap; color: #334155; font-family: 'Consolas', 'Monaco', monospace; line-height: 1.4;">${event.dataLayerCode}</pre>
-                    <div style="margin-top: 8px; font-size: 0.75rem; color: #64748b; border-top: 1px dashed #cbd5e1; padding-top: 8px;">
-                        <strong>Intelligence:</strong> This event will automatically trigger tags for GA4 (ID: <span class="var-ref">GTM-VAR</span>) and FB Pixel (ID: <span class="var-ref">FB-VAR</span>).
-                    </div>
                 </div>
 
                 <div class="toggle-switch">
@@ -233,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.textContent = originalText;
                 btn.style.backgroundColor = '';
                 btn.disabled = false;
-                alert(`Mock: Configuration pushed to GTM!\n\nIntelligence Layer Active:\n- '${gtmId}' is now the master container.\n- Events like 'purchase' will automatically populate GA4 ('${ga4Id}') and FB Pixel ('${pixelId}').\n- Data Layer is standardized for all marketing channels.`);
+                alert(`Mock: Configuration pushed to GTM!\n\nSmart Insights Active:\n- '${gtmId}' is now the master container.\n- Events like 'purchase' will automatically populate GA4 ('${ga4Id}') and FB Pixel ('${pixelId}').\n- Data Layer is standardized for all marketing channels.`);
             }, 3000);
         }, 2000);
     });
