@@ -15,42 +15,86 @@ document.addEventListener('DOMContentLoaded', () => {
             trigger: 'Click on .add-to-cart, button[type="submit"]',
             description: 'Tracks when a user adds an item to their shopping cart.',
             confidence: 98,
-            type: 'e-commerce'
+            type: 'e-commerce',
+            dataLayerCode: `dataLayer.push({
+  event: 'add_to_cart',
+  ecommerce: {
+    currency: 'USD',
+    value: 29.99,
+    items: [{
+      item_id: 'SKU_12345',
+      item_name: 'T-Shirt',
+      price: 29.99,
+      quantity: 1
+    }]
+  }
+});`
         },
         {
             title: 'Purchase Complete',
             trigger: 'Pageview /thank-you, /order-confirmed',
             description: 'Fires when a transaction is successfully completed.',
             confidence: 99,
-            type: 'e-commerce'
+            type: 'e-commerce',
+            dataLayerCode: `dataLayer.push({
+  event: 'purchase',
+  ecommerce: {
+    transaction_id: 'T_12345',
+    value: 59.98,
+    currency: 'USD',
+    items: [/* items array */]
+  }
+});`
         },
         {
             title: 'Newsletter Signup',
             trigger: 'Form Submit #newsletter-form',
             description: 'Tracks successful email subscription form submissions.',
             confidence: 92,
-            type: 'lead'
+            type: 'lead',
+            dataLayerCode: `dataLayer.push({
+  event: 'generate_lead',
+  form_id: 'newsletter_footer',
+  lead_type: 'newsletter'
+});`
         },
         {
             title: 'View Content',
             trigger: 'Pageview /blog/*, /article/*',
             description: 'Tracks when a user reads a content piece.',
             confidence: 85,
-            type: 'content'
+            type: 'content',
+            dataLayerCode: `dataLayer.push({
+  event: 'view_content',
+  content_type: 'article',
+  content_id: 'post_123',
+  content_title: 'How to Setup GTM'
+});`
         },
         {
             title: 'Contact Link Click',
             trigger: 'Click a[href^="mailto:"], a[href^="tel:"]',
             description: 'Tracks clicks on contact email or phone links.',
             confidence: 88,
-            type: 'lead'
+            type: 'lead',
+            dataLayerCode: `dataLayer.push({
+  event: 'contact_click',
+  link_type: 'email', // or 'phone'
+  link_text: 'support@example.com'
+});`
         },
         {
             title: 'Video Engagement',
             trigger: 'YouTube Video Play > 10s',
             description: 'Tracks when a user watches embedded product videos.',
             confidence: 76,
-            type: 'engagement'
+            type: 'engagement',
+            dataLayerCode: `dataLayer.push({
+  event: 'video_progress',
+  video_title: 'Product Demo',
+  video_percent: 25,
+  video_provider: 'youtube'
+});`
         }
     ];
 
@@ -114,6 +158,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="event-title">${event.title}</span>
                 <span class="event-trigger">${event.trigger}</span>
                 <p class="event-desc">${event.description}</p>
+                
+                <div class="datalayer-preview" style="background: #f1f5f9; padding: 12px; border-radius: 8px; margin: 12px 0; font-size: 0.8rem; border: 1px solid #e2e8f0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <strong style="color: #64748b;">Data Layer Configuration</strong>
+                        <span style="color: #94a3b8; font-size: 0.7rem;">Ready for GTM</span>
+                    </div>
+                    <pre style="margin: 0; white-space: pre-wrap; color: #334155; font-family: 'Consolas', 'Monaco', monospace; line-height: 1.4;">${event.dataLayerCode}</pre>
+                    <div style="margin-top: 8px; font-size: 0.75rem; color: #64748b; border-top: 1px dashed #cbd5e1; padding-top: 8px;">
+                        <strong>Intelligence:</strong> This event will automatically trigger tags for GA4 (ID: <span class="var-ref">GTM-VAR</span>) and FB Pixel (ID: <span class="var-ref">FB-VAR</span>).
+                    </div>
+                </div>
+
                 <div class="toggle-switch">
                     <label class="switch">
                         <input type="checkbox" checked>
@@ -177,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.textContent = originalText;
                 btn.style.backgroundColor = '';
                 btn.disabled = false;
-                alert(`Mock: Configuration pushed to GTM!\n\nIncluded Variables:\n- GTM ID: ${gtmId}\n- Pixel ID: ${pixelId}\n- GA4 ID: ${ga4Id}`);
+                alert(`Mock: Configuration pushed to GTM!\n\nIntelligence Layer Active:\n- '${gtmId}' is now the master container.\n- Events like 'purchase' will automatically populate GA4 ('${ga4Id}') and FB Pixel ('${pixelId}').\n- Data Layer is standardized for all marketing channels.`);
             }, 3000);
         }, 2000);
     });
